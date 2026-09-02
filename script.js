@@ -62,7 +62,7 @@ form.addEventListener("submit", (event) => {
     pergunta4: formData.get("entry.1475680448")
   };
 
-  const appsScriptUrl = "https://script.googleapis.com/macros/s/AKfycbxxq7xa_e-VakarPckCgODHzribnMcDq86HdVh17Lgw7KPhx2k6_JN6EopkU7qq2hsA/exec";
+  const appsScriptUrl = "https://script.googleapis.com/macros/s/AKfycbxK3SVZnKo89SCc1-dBMbCVSAwV_IvcdsFmnm7v2YBzdzlhTBy749AnkjM3jzIU-X85/exec";
 
   fetch(appsScriptUrl, {
     method: "POST",
