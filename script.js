@@ -49,12 +49,38 @@ prevPageBtn.addEventListener("click", (e) => {
 });
 
 form.addEventListener("submit", (event) => {
-  window.setTimeout(() => {
-    modal.classList.add("is-open");
-    modal.setAttribute("aria-hidden", "false");
-    form.reset();
-    showPage1();
-  }, 300);
+  event.preventDefault();
+  
+  const formData = new FormData(form);
+  const data = {
+    nome: formData.get("entry.1001546060"),
+    email: formData.get("entry.1684517066"),
+    whatsapp: formData.get("entry.1611408848"),
+    pergunta1: formData.get("entry.440161863"),
+    pergunta2: formData.get("entry.1759629347"),
+    pergunta3: formData.get("entry.1879069444"),
+    pergunta4: formData.get("entry.1475680448")
+  };
+
+  const appsScriptUrl = "https://script.googleapis.com/macros/s/AKfycbxxq7xa_e-VakarPckCgODHzribnMcDq86HdVh17Lgw7KPhx2k6_JN6EopkU7qq2hsA/exec";
+
+  fetch(appsScriptUrl, {
+    method: "POST",
+    body: new URLSearchParams(data),
+    mode: "no-cors"
+  })
+  .then(() => {
+    window.setTimeout(() => {
+      modal.classList.add("is-open");
+      modal.setAttribute("aria-hidden", "false");
+      form.reset();
+      showPage1();
+    }, 300);
+  })
+  .catch(error => {
+    console.error("Erro:", error);
+    alert("Houve um erro ao enviar. Tente novamente!");
+  });
 });
 
 document.querySelector(".modal__close").addEventListener("click", closeModal);
